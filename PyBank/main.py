@@ -3,30 +3,25 @@ import csv
 
 csvpath = os.path.join('Resources', 'budget_data.csv')
 
-with open(csvpath, 'r', newline='') as csvfile:
+with open(csvpath) as csvfile:
 
 	csvreader = csv.reader(csvfile, delimiter=',')
 
 	csv_header = next(csvreader)
-	#print(f"CSV Header: {csv_header}")
+
+	profit = next(csvreader)
 
 	months = 0
-	#total = float
-
-	#def print_profits(budget_data):
-	#	total = float(budget_data[1])
-
-	#	for line in csvreader:
-	#		total += float(budget_data[1])
-
+	
 	for line in csvreader:
-	 	months += 1
-
+		months += 1
+		profit += line[1]
+	
 	print('Financial Analysis')
 	print('----------------------------')
 	print(f'Total Months: {months}')
 
-	print(f'Total: $')
+	print(f'Total: ${profit}')
 
 	print(f'Average Change: ')
 
