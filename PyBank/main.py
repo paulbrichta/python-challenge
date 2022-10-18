@@ -15,8 +15,8 @@ with open(csvpath, 'r', newline='') as csvfile:
 	previousProfit = 0
 	currentProfit = 0
 
-	totalChange = 0
 	change = 0
+	totalChange = 0
 
 	greatestIncrease = 0
 	greatestDecrease = 0
