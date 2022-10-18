@@ -34,9 +34,11 @@ with open(csvpath, 'r', newline='') as csvfile:
 
 		if change >= greatestIncrease:
 			greatestIncrease = change
+			gr_inc_str = str(line[0])
 
 		if change <= greatestDecrease:
 			greatestDecrease = change
+			gr_dec_str = str(line[0])
 		
 		previousProfit = currentProfit
 
@@ -45,8 +47,8 @@ with open(csvpath, 'r', newline='') as csvfile:
 	print(f'Total Months: {months}')
 	print(f'Total: ${netProfit}')
 	print(f'Average Change: ${round(totalChange/(months-1), 2)}')
-	print(f'Greatest Increase in Profits: (${greatestIncrease})')
-	print(f'Greatest Decrease in Profits: (${greatestDecrease})')
+	print(f'Greatest Increase in Profits: {gr_inc_str} (${greatestIncrease})')
+	print(f'Greatest Decrease in Profits: {gr_dec_str} (${greatestDecrease})')
 
 output_path = os.path.join("Analysis", "Module 3 PyBank Analysis.txt")
 
@@ -56,5 +58,5 @@ with open(output_path, 'w') as file:
 	file.write(f'Total Months: {months}\n')
 	file.write(f'Total: ${netProfit}\n')
 	file.write(f'Average Change: ${round(totalChange/(months-1), 2)}' + '\n')
-	file.write(f'Greatest Increase in Profits: (${greatestIncrease})\n')
-	file.write(f'Greatest Decrease in Profits: (${greatestDecrease})')
+	file.write(f'Greatest Increase in Profits: {gr_inc_str} (${greatestIncrease})\n')
+	file.write(f'Greatest Decrease in Profits: {gr_dec_str} (${greatestDecrease})')
