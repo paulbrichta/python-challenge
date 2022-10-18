@@ -1,6 +1,6 @@
 # python-challenge
 
-PyBank
+PyBank:
 A Python script created to analyze the financial records of a company given the financial dataset called budget_data.csv.
 The dataset is composed of two columns: "Date" and "Profit/Losses".
 
