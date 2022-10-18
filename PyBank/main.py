@@ -10,12 +10,12 @@ with open(csvpath, 'r', newline='') as csvfile:
 	csv_header = next(csvreader)
 
 	months = 0
-	netprofit = 0
+	netProfit = 0
 	
-	previousprofit = 0
-	currentprofit = 0
+	previousProfit = 0
+	currentProfit = 0
 
-	totalchange = 0
+	totalChange = 0
 	change = 0
 
 	greatestIncrease = 0
@@ -24,13 +24,13 @@ with open(csvpath, 'r', newline='') as csvfile:
 	for line in csvreader:
 		months += 1
 		
-		netprofit += int(line[1])
+		netProfit += int(line[1])
 
-		currentprofit = int(line[1])
+		currentProfit = int(line[1])
 
-		if previousprofit != 0:
-			change = (currentprofit - previousprofit)
-			totalchange += change
+		if previousProfit != 0:
+			change = (currentProfit - previousProfit)
+			totalChange += change
 
 		if change >= greatestIncrease:
 			greatestIncrease = change
@@ -38,13 +38,23 @@ with open(csvpath, 'r', newline='') as csvfile:
 		if change <= greatestDecrease:
 			greatestDecrease = change
 		
-		previousprofit = currentprofit
+		previousProfit = currentProfit
 
-	
 	print('Financial Analysis')
 	print('----------------------------')
 	print(f'Total Months: {months}')
-	print(f'Total: ${netprofit}')
-	print(f'Average Change: ${round(totalchange/86, 2)}')
-	print(f'Greatest Increase in Profits: ${greatestIncrease}')
-	print(f'Greatest Decrease in Profits: ${greatestDecrease}')
+	print(f'Total: ${netProfit}')
+	print(f'Average Change: ${round(totalChange/(months-1), 2)}')
+	print(f'Greatest Increase in Profits: (${greatestIncrease})')
+	print(f'Greatest Decrease in Profits: (${greatestDecrease})')
+
+output_path = os.path.join("Analysis", "Module 3 PyBank Analysis.txt")
+
+with open(output_path, 'w') as file:
+	file.write('Financial Analysis' + '\n')
+	file.write('----------------------------' + '\n')
+	file.write(f'Total Months: {months}\n')
+	file.write(f'Total: ${netProfit}\n')
+	file.write(f'Average Change: ${round(totalChange/(months-1), 2)}' + '\n')
+	file.write(f'Greatest Increase in Profits: (${greatestIncrease})\n')
+	file.write(f'Greatest Decrease in Profits: (${greatestDecrease})')
